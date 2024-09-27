@@ -7,12 +7,12 @@
       </elementProp>
     </TestPlan>
     <hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="随机网站并发 线程测试">
-        <intProp name="ThreadGroup.num_threads">3000</intProp>
-        <intProp name="ThreadGroup.ramp_time">10</intProp>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="awol admin 线程测试">
+        <intProp name="ThreadGroup.num_threads">256</intProp>
+        <intProp name="ThreadGroup.ramp_time">4</intProp>
         <longProp name="ThreadGroup.duration">60</longProp>
         <longProp name="ThreadGroup.delay">1</longProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器">
@@ -23,7 +23,6 @@
       <hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP请求">
           <stringProp name="HTTPSampler.domain">my.winterchen.com</stringProp>
-          <stringProp name="HTTPSampler.port">8189</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -35,7 +34,7 @@
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP信息头管理器">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP信息头管理器" enabled="true">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="Accept" elementType="Header">
                 <stringProp name="Header.name">Accept</stringProp>
@@ -45,6 +44,10 @@
                 <stringProp name="Header.name">Accept-Language</stringProp>
                 <stringProp name="Header.value">zh-CN,zh;q=0.9</stringProp>
               </elementProp>
+              <elementProp name="Authorization" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiJzeXNfdXNlcjoxIiwicm5TdHIiOiJkbnJvdjJGQTRVeTRpSDZmNmJTVXZhbGxXck1Pem95YiIsInVzZXJJZCI6MX0.T9yK3F27OnZG7EBVxwAZWos85ge_VeWSDbyQmaNJ9vg</stringProp>
+              </elementProp>
               <elementProp name="Connection" elementType="Header">
                 <stringProp name="Header.name">Connection</stringProp>
                 <stringProp name="Header.value">keep-alive</stringProp>
@@ -52,6 +55,14 @@
               <elementProp name="Content-Language" elementType="Header">
                 <stringProp name="Header.name">Content-Language</stringProp>
                 <stringProp name="Header.value">zh_CN</stringProp>
+              </elementProp>
+              <elementProp name="Cookie" elementType="Header">
+                <stringProp name="Header.name">Cookie</stringProp>
+                <stringProp name="Header.value">_shopify_y=2738e4c6-6b3c-4c39-8174-3ab5905d5354; _gcl_au=1.1.823385147.1725536574; _hjSessionUser_4974817=eyJpZCI6IjZiNGIxYmU3LTM0N2ItNTc2NC05ZmZlLWY0ZmE2MzFmNDRmNiIsImNyZWF0ZWQiOjE3MjU1MzY1NzUxMzYsImV4aXN0aW5nIjp0cnVlfQ==; sib_cuid=874920de-a72d-482a-85ee-922b45b5a0d7; assortion=36cf2339-8ad5-4159-b035-060a35544455; _hjSessionUser_3562508=eyJpZCI6ImJhMzliOTIxLTdmNWQtNTI0MS1iMGFhLTA5ZTVmYzc1Yzg5YSIsImNyZWF0ZWQiOjE3MjU4NzAxOTI0NDEsImV4aXN0aW5nIjp0cnVlfQ==; _8dp=1725870229558.662380686; _tracking_consent=%7B%22con%22%3A%7B%22CMP%22%3A%7B%22a%22%3A%22%22%2C%22m%22%3A%22%22%2C%22p%22%3A%22%22%2C%22s%22%3A%22%22%7D%7D%2C%22v%22%3A%222.1%22%2C%22region%22%3A%22HK%22%2C%22reg%22%3A%22%22%7D; _orig_referrer=https%3A%2F%2Fn9fwlxp0cxuh1uxd-55474454576.shopifypreview.com%2F; _landing_page=%2F%3Futm_source%3Dpushowl%26utm_medium%3Dpost_subscription%26utm_campaign%3Dpost_subscription%26utm_term%3Dreminder_1%26pn_source%3Dpost_subscription%26pn_source_id%3D502001483%26subscriber_id%3D363614643; _cmp_a=%7B%22purposes%22%3A%7B%22a%22%3Atrue%2C%22p%22%3Atrue%2C%22m%22%3Atrue%2C%22t%22%3Atrue%7D%2C%22display_banner%22%3Afalse%2C%22sale_of_data_region%22%3Afalse%7D; _gid=GA1.2.1342995585.1727055514; _hjMinimizedPolls=1050714; _clck=1r7vv0i%7C2%7Cfph%7C0%7C1709; cto_bundle=JyO1kl80WjclMkZSeWRCc2lIbno2RTJJZnVRN0JBaDR4VTZzeDN5c1pUVFNlSnFSWExNYlIlMkJMdW13dVB6aWQxa3BUUEZsSEtnS28ydGZ1V2dpbThGQ0U1alhWQTFYTXZ3aGExN3JGd05LQmViV3lIZm9oVWxxTTRCd0xhb0tlaiUyQm9sRmZUdjA4VGdpbFNrR1BDOG1aaXB3bVEwWnQ2cjB3bmQxTG1zWHFuejdNNklqS0xJMkNHWTFMVlM4NVVGREV2UHdiUHd1YzN0Q2tEUUNFSHpkNHlIdk1yMSUyQkElM0QlM0Q; _ga=GA1.2.1556120054.1725536576; _uetsid=8b9a4340794c11efb4a6cf83ccd11586; _uetvid=fe3fadf06b7b11efa63df7b8af54fe7c; _ga_WX1KD6S35Z=GS1.1.1727243023.26.1.1727243343.59.0.0; username=admin; rememberMe=true; password=X9m23D/M/3dbgwlYX3Mk7AiTUqwfQ/6Ocei8WcRHZH+my++3KolkDucqrlchR3tASPKbUh8r3CDPJaz+oR3FBQ==; Admin-Token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiJzeXNfdXNlcjoxIiwicm5TdHIiOiJkbnJvdjJGQTRVeTRpSDZmNmJTVXZhbGxXck1Pem95YiIsInVzZXJJZCI6MX0.T9yK3F27OnZG7EBVxwAZWos85ge_VeWSDbyQmaNJ9vg; _shopify_s=66a1f363-3ef8-4efd-b5a8-34fc2f4b4d9e; SHOPLIFT={&quot;id&quot;:&quot;c9feb00f-133a-451d-8dcf-ca9f7457f195&quot;,&quot;createdAt&quot;:&quot;2024-09-05T11:42:53.7145Z&quot;,&quot;device&quot;:&quot;desktop&quot;,&quot;utmSource&quot;:&quot;&quot;,&quot;utmMedium&quot;:&quot;&quot;,&quot;utmCampaign&quot;:&quot;&quot;,&quot;utmContent&quot;:&quot;&quot;,&quot;referrer&quot;:&quot;&quot;,&quot;needsPersistence&quot;:false,&quot;visitorTests&quot;:[],&quot;storedAt&quot;:&quot;2024-09-25T06:52:01.843Z&quot;,&quot;isProcessing&quot;:false}; _clsk=1s4vpvz%7C1727247215048%7C1%7C1%7Cx.clarity.ms%2Fcollect</stringProp>
+              </elementProp>
+              <elementProp name="Referer" elementType="Header">
+                <stringProp name="Header.name">Referer</stringProp>
+                <stringProp name="Header.value">https://admin.awolvision.com/showrooms/neighborhoodShowrooms</stringProp>
               </elementProp>
               <elementProp name="Sec-Fetch-Dest" elementType="Header">
                 <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
@@ -77,7 +88,7 @@
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="汇总报告">
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="汇总报告" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -114,7 +125,7 @@
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="聚合报告">
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="聚合报告" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -151,7 +162,7 @@
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="StatGraphVisualizer" testclass="ResultCollector" testname="汇总图">
+        <ResultCollector guiclass="StatGraphVisualizer" testclass="ResultCollector" testname="汇总图" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -188,7 +199,7 @@
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="用表格查看结果">
+        <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="用表格查看结果" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -363,7 +374,7 @@
         </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
         <hashTree/>
       </hashTree>
-      <kg.apc.jmeter.threads.SteppingThreadGroup guiclass="kg.apc.jmeter.threads.SteppingThreadGroupGui" testclass="kg.apc.jmeter.threads.SteppingThreadGroup" testname="awol 渐进式压测 Stepping Thread Group" enabled="false">
+      <kg.apc.jmeter.threads.SteppingThreadGroup guiclass="kg.apc.jmeter.threads.SteppingThreadGroupGui" testclass="kg.apc.jmeter.threads.SteppingThreadGroup" testname="awol 渐进式压测 Stepping Thread Group">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <stringProp name="ThreadGroup.num_threads">200</stringProp>
         <stringProp name="Threads initial delay">0</stringProp>
@@ -838,7 +849,7 @@
         </DurationAssertion>
         <hashTree/>
       </hashTree>
-      <kg.apc.jmeter.threads.SteppingThreadGroup guiclass="kg.apc.jmeter.threads.SteppingThreadGroupGui" testclass="kg.apc.jmeter.threads.SteppingThreadGroup" testname="随机网站 渐进式压测 Stepping Thread Group" enabled="false">
+      <kg.apc.jmeter.threads.SteppingThreadGroup guiclass="kg.apc.jmeter.threads.SteppingThreadGroupGui" testclass="kg.apc.jmeter.threads.SteppingThreadGroup" testname="随机网站 渐进式压测 Stepping Thread Group">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <stringProp name="ThreadGroup.num_threads">3000</stringProp>
         <stringProp name="Threads initial delay">0</stringProp>
